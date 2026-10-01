@@ -1,6 +1,8 @@
 /build/
 /output/
 /tmp/
+/tests/
+/Plotting/
 .DS_Store
 __pycache__/
 *.pyc

@@ -21,7 +21,7 @@ configure_file(run.mac run.mac COPYONLY)
 configure_file(vis.mac vis.mac COPYONLY)
 
 include(CTest)
-if(BUILD_TESTING)
+if(BUILD_TESTING AND EXISTS "${PROJECT_SOURCE_DIR}/tests")
   foreach(check core kinematics single_ring)
     add_executable(test_${check} tests/${check}.cxx)
     target_link_libraries(test_${check} PRIVATE sim_core)
