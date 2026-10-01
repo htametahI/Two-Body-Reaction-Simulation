@@ -7,25 +7,27 @@
 #include "globals.hh"
 #include <vector>
 
-// Values here are run inputs. The simulated beam energy and the energy assumed
-// during reconstruction are deliberately separate quantities.
+// The simulation has a prepare mode and a reaction mode to save computing time
+// Beam is sampled once and wirtten to beam.dat, reactions are simulated using the sampled beam file
+
+// Beam properties: 
 struct BeamConfig {
   G4double energy = 66.0 * MeV;
-  G4double fractionalEnergySpread = 0.0017; // Gaussian sigma / mean energy.
+  G4double fractionalEnergySpread = 0.0017; // Gaussian 1sigma / mean energy.
   G4double spotDiameter = 0.66 * mm;
   G4double normalizedEmittance = 0.2 * CLHEP::pi * mm * mrad;
   G4double startZ = -2.0 * mm;
 };
 
+// For reconstructing the excitation energy spectrum
 struct ReconstructionConfig {
-  G4double s3EnergySigma = 25.0 * keV;
-  // Retained reference value from the existing reconstruction. Its original
-  // calibration provenance is not recorded; do not substitute event truth here.
-  G4double assumedBeamEnergyAtCenter = 64.179880978 * MeV;
+  G4double s3EnergySigma = 25.0 * keV; // change depending on your S3 energy calibrations, this is meant to model the S3 energy resolution 
+  G4double assumedBeamEnergyAtCenter = 64.179880978 * MeV; // calculate this assuming the beam reacts at the center of your target
 };
 
 enum class SimulationMode { Prepare, Reaction };
 
+// simulation input and outputs
 struct SimulationConfig {
   G4String beamFile = "../output/beam.dat";
   G4String dwbaFile = "../input/11500_1minus/fort.202";
@@ -36,7 +38,7 @@ struct SimulationConfig {
   G4double excitationEnergy = 11.5 * MeV;
   BeamConfig beam;
   ReconstructionConfig reconstruction;
-  // exlucded ring numbers
+  // exlucded ring numbers (change if they are good in your experiment)
   std::vector<G4int> excludedS3RingNumbers = {16, 17, 18};
 };
 

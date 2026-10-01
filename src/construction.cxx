@@ -32,7 +32,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct() {
   G4NistManager *nist = G4NistManager::Instance();
   // use near vaccum as world volume:
   G4Material *worldMat = nist->FindOrBuildMaterial("G4_Galactic");
-  // target:
+  // target: change for your experiment
   G4Material *Si = nist->FindOrBuildMaterial("G4_Si");
   G4Material *LiF = nist->FindOrBuildMaterial("G4_LITHIUM_FLUORIDE");
   G4Material *C = nist->FindOrBuildMaterial("G4_C");
@@ -69,7 +69,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct() {
   PlaceLayer("LiF", LiF, lifThickness, targetRadius, lifCenter, logicWorld, lifVis);
   PlaceLayer("C", C, cThickness, targetRadius, cCenter, logicWorld, cVis);
 
-  // ========================== s3 =============================
+  // ========================== S3 =============================
   fS3RingLogicals.clear();
   const G4int S3RingCount = fS3RingCount;
   const G4double S3InnerRadius = fS3InnerRadius;

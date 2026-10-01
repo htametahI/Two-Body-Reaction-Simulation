@@ -13,7 +13,6 @@ class G4Run;
 class RunAction : public G4UserRunAction {
 public:
   RunAction();
-  // Non-owning links let run boundaries control every text stream explicitly.
   void SetActions(PrimaryGenerator *generator, EventAction *event, SteppingAction *stepping);
   void BeginOfRunAction(const G4Run *run) override;
   void EndOfRunAction(const G4Run *run) override;

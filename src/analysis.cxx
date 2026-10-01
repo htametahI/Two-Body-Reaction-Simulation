@@ -49,7 +49,7 @@ void Book() {
   s.eventID = man->CreateNtupleIColumn(s.id, "eventID");
   s.ringIndex = man->CreateNtupleIColumn(s.id, "ringID");
   s.depositedEnergy = man->CreateNtupleDColumn(s.id, "edep_MeV");
-  // Legacy branch name retained for existing ROOT readers.
+  
   s.smearedKineticEnergy = man->CreateNtupleDColumn(s.id, "edep_smeared_MeV");
   s.kineticEnergy = man->CreateNtupleDColumn(s.id, "ekin_MeV");
   s.theta = man->CreateNtupleDColumn(s.id, "theta_deg");

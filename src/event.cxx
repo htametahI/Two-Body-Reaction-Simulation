@@ -13,8 +13,6 @@
 void EventAction::BeginRun() {
   if (gSimulationMode != SimulationMode::Reaction) return;
   Output::Open(fExitOut, gSimulationConfig.exitKinematicsFile);
-  // Preserve existing columns, including the legacy "edep_smeared" name.
-  // It stores smeared kinetic energy. New selection fields are appended.
   fExitOut << "eventID,Ex_MeV,"
            << "hasMg26Exit,Mg26_E_MeV,Mg26_theta_deg,Mg26_phi_deg,"
            << "hasTritonExit,triton_E_MeV,triton_theta_deg,triton_phi_deg,"

@@ -5,7 +5,6 @@
 #include "globals.hh"
 #include <vector>
 
-// forward declaration 
 class G4HCofThisEvent; 
 class G4Step; 
 class G4TouchableHistory; 

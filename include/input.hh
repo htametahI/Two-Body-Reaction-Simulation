@@ -12,7 +12,7 @@ struct BeamState {
 };
 
 struct DwbaDistribution {
-  std::vector<G4double> theta; // Geant4 angular units (radians).
+  std::vector<G4double> theta; 
   std::vector<G4double> cdf;
 };
 

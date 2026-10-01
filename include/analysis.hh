@@ -1,8 +1,6 @@
 #ifndef ANALYSIS_HH
 #define ANALYSIS_HH
 
-// IDs are captured from Geant4 at booking time. Writers never rely on the
-// creation order of histograms, ntuples, or columns.
 namespace Analysis {
 struct ParticleColumns { int energy, theta, phi; };
 struct ReactionColumns {

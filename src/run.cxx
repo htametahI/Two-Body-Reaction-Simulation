@@ -21,8 +21,6 @@ namespace {
 void SaveRandomState(const std::string &path) {
   std::ofstream stream;
   Output::Open(stream, path);
-  // The full state includes distribution caches; recording a seed alone is
-  // insufficient to restart a reaction run following beam preparation.
   CLHEP::HepRandom::saveFullState(stream);
   Output::Close(stream, path);
 }
@@ -109,7 +107,6 @@ void RunAction::BeginOfRunAction(const G4Run *run) {
     meta << "{\"beam\": " << Output::FileIdentityJson(c.beamFile)
          << ", \"dwba\": " << Output::FileIdentityJson(c.dwbaFile) << '}';
   } else {
-    // Custom primary generators (e.g. regression fixtures) do not read these inputs.
     meta << "null";
   }
   meta << ",\n  \"outputs\": {\"beam\": " << Output::JsonString(Absolute(c.beamFile));
@@ -122,8 +119,6 @@ void RunAction::BeginOfRunAction(const G4Run *run) {
   meta << "},\n";
   fMetadataPrefix = meta.str();
 
-  // Load and validate all reaction input before processing events. Text outputs
-  // are recreated per run, consistently with the ROOT output lifecycle.
   if (fGenerator) fGenerator->BeginRun(run->GetNumberOfEventToBeProcessed());
   if (fEvent) fEvent->BeginRun();
   if (fStepping) fStepping->BeginRun();

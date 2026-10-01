@@ -244,9 +244,7 @@ void PrimaryGenerator::GenerateReaction(G4Event *event) {
   if (tPhi < 0.0)
     tPhi += 360.0 * deg;
 
-  // Retain the beam state per event so downstream depth joins are independent
-  // of later changes to the shared preparation file.
-
+  // write out info@reaction vertices
   fTruthOut << event->GetEventID() << ","
             << gSimulationConfig.excitationEnergy / MeV << ","
             << theta / deg << ","

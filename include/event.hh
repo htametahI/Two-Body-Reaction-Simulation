@@ -23,7 +23,7 @@ public:
                      G4double tritonEnergyAtCenter, G4double beamEnergyAtCenter);
 
 private:
-  RunAction *fRunAction = nullptr; // Non-owning; Geant4 owns the actions.
+  RunAction *fRunAction = nullptr; // Geant4 owns the actions.
   std::ofstream fExitOut, fTransmissionOut;
   G4bool fHasTritonExit = false, fGotMg = false, fGotS3Hit = false;
   G4int fS3EnabledRingsHit = 0;
