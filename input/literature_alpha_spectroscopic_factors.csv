@@ -1,0 +1,5 @@
+study,year,Ex_MeV,Jpi,S_alpha,is_upper_limit,confidence_level,source_url,note
+Talwar et al.,2016,10.951,1-,0.15,false,,https://link.aps.org/accepted/10.1103/PhysRevC.93.055803,Final published Table VIII
+Ugalde et al. / Longland et al.,2007/2012,10.949,1-,0.007,true,,https://arxiv.org/pdf/1206.3871,Normalized Ugalde value treated by Longland et al. as an upper limit because the 10.943 and 10.949 MeV states were unresolved
+Talwar et al.,2016,11.167,2+,0.99,false,,https://link.aps.org/accepted/10.1103/PhysRevC.93.055803,Final published Table VIII value for the 2+ assignment
+Ota et al.,2020,11.171,2+,0.15,true,90%,https://scoap3-prod-backend.s3.cern.ch/media/files/52318/10.1016/j.physletb.2020.135256.pdf,Table 2 upper limit normalized assuming the 11.318 MeV reference state is 0+

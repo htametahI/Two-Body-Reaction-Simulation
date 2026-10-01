@@ -1,0 +1,14 @@
+/vis/open OGL
+/vis/viewer/set/viewpointVector 1 1 1
+/vis/drawVolume
+/vis/viewer/set/autoRefresh true
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByParticleID pidColors
+/vis/modeling/trajectories/pidColors/setDefault grey
+/vis/modeling/trajectories/pidColors/set Ne22 cyan
+/vis/modeling/trajectories/pidColors/set triton red
+/vis/modeling/trajectories/pidColors/set Mg26 green
+/vis/scene/add/scale 1 mm
+/vis/scene/add/eventID
+/vis/scene/endOfEventAction accumulate 500
+/vis/viewer/zoom 5
