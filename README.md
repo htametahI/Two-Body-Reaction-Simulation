@@ -51,15 +51,12 @@ This is a two-body reaction and detector response simulation. In order to save c
 1. **Prepare the beam.** Sample the incident beam energy, position, and direction,
    transport it into the target, and save its state at a sampled reaction depth
    in `beam.dat`.
-2. **Generate the reaction.** Read one saved beam row per reaction event. If DWBA calculations are available (`fort.202` file), sample the center-of-mass angle from the DWBA distribution, including the `sin(theta)` solid-angle weight, and sample a uniform azimuth. Calculate relativistic two-body kinematics for the requested recoil excitation energy and transform the products to the laboratory frame.
+2. **Generate the reaction.** Read one saved beam row per reaction event. If DWBA calculations are available (`fort.202` file), sample the center-of-mass angle from the DWBA distribution, including the `sin(theta)` solid-angle weight, and sample a uniform azimuthal angle. Calculate relativistic two-body kinematics for the requested recoil excitation energy and transform the products to the laboratory frame.
 3. **Transport and detect.** Geant4 transports the products through the target
-   and detector. The energy and angle of the recoils and ejectiles are recorded at the reaction vertices and the target exit.
+   and detector. The energy and angle of the recoils and ejectiles are recorded at the reaction vertices and the target exits.
 4. **Select and reconstruct.** Accept events with exactly one enabled S3 ring
    hit. Multi-hit option is available. Apply detector-energy smearing and back-correct the triton energy through
    the silicon dead layer and half the LiF target thickness using CSDA ranges.
-
-The DWBA table sets the angular sampling shape; generated event counts are not
-an absolute experimental yield. Reaction species are currently hard-coded, rather than selected through command-line arguments.
 
 ## Running the Simulation
 
@@ -83,7 +80,7 @@ The simulation can be run in several modes as listed below, `[ ]` indicates opti
 | `<state>_exit_kinematics.csv` | Target-exit kinematics and selected S3/reconstructed energies. |
 | `transmission/<state>.csv` | Recoil energy and angles at target exit in EMMA spectrometer coordinates for transmission efficiency calculations. |
 
-The contents of each `.csv` file are as follows. Note that the current labels are set up for a particular experiment and yours might differ. ²⁶Mg → recoils; triton → ejectiles.
+The contents of each `.csv` file are as listed below. Note that the current labels are set up for a particular experiment and yours might differ. ²⁶Mg → recoils; triton → ejectiles.
 
 ### `<state>_truth_kinematics.csv`
 
@@ -115,7 +112,7 @@ file includes events regardless of whether they later pass the S3 selection.
 ### `<state>_exit_kinematics.csv`
 
 One row per reaction event recorded at the end of the event, including events
-that fail the S3 selection. Match `eventID` with the truth file from the same run
+that do not hit the S3. Match `eventID` with the truth file from the same run
 to compare vertex and exit kinematics.
 
 | Column | Unit | Contents |
@@ -142,10 +139,6 @@ If an event does not hit the S3, the four columns from `triton_S3_ringID`
 through `beam_E_center_MeV` are `nan`.
 
 ### `transmission/<DWBA-state>.csv`
-
-One row per event with both target exits recorded and exactly one enabled S3
-ring hit. `<DWBA-state>` is the input table's parent-folder name, for example
-`11500_1minus` for `input/11500_1minus/fort.202`.
 
 | Column | Unit | Contents |
 | --- | --- | --- |
